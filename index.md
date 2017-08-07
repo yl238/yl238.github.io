@@ -1,2 +1,3 @@
 # Sue's webpage
-Hello world!
+## Miscellaneous 
+Things to be noted
