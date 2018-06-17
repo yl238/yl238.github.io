@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "Stack Overflow question recommender"
 excerpt: "First steps in building a question recommender using SO data"
 date: 2018-06-17 11:00:00
