@@ -19,9 +19,9 @@ So let's build an offline model that can find similar questions asked in Stack O
 
 Finding similar items is a well-known problem in information retrieval and there are a number of algorithms out there. The most often used one is Locality Sensitive Hashing (LSH) but neural networks based models such as autoencoders have been developed. In this project we shall try to explore them all. 
 
-Jupyter notebooks for this project can be found at https://github.com/yl238/stackoverflow.
+Jupyter notebooks for the project can be found at [this repository](https://github.com/yl238/stackoverflow).
 
-## Data Extraction
+## Data Extractio
 [Google BigQuery](https://cloud.google.com/bigquery/public-data/stackoverflow) will allow you to access the SO dataset using SQL queries, but since I'm not looking for answers to specific questions, it seemed better to just download the raw data. Fortunately all Stack Exchange content are dumped on a quarterly basis as `.7z` files and can be downloaded through the [Internet Archive](https://archive.org/download/stackexchange). Some of the files are massive: the SO posts file is over 12Gb, which when uncompressed gives a 61Gb XML file. Downloading took a very long time (4 hours for a 12Gb file), which I suspect is due to the fact that there are no mirrors in Europe.
 
 I also needed to download the [readme.txt](https://ia800107.us.archive.org/27/items/stackexchange/readme.txt) file, which describes the dataset schema so I can actually interpret the XML file. A typical line in the `Posts.xml` file looks like this in plain text:
