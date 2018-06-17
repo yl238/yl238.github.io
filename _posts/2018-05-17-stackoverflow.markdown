@@ -21,8 +21,8 @@ Finding similar items is a well-known problem in information retrieval and there
 
 Jupyter notebooks for the project can be found at [this repository](https://github.com/yl238/stackoverflow).
 
-## Data Extractio
-[Google BigQuery](https://cloud.google.com/bigquery/public-data/stackoverflow) will allow you to access the SO dataset using SQL queries, but since I'm not looking for answers to specific questions, it seemed better to just download the raw data. Fortunately all Stack Exchange content are dumped on a quarterly basis as `.7z` files and can be downloaded through the [Internet Archive](https://archive.org/download/stackexchange). Some of the files are massive: the SO posts file is over 12Gb, which when uncompressed gives a 61Gb XML file. Downloading took a very long time (4 hours for a 12Gb file), which I suspect is due to the fact that there are no mirrors in Europe.
+## Data Extraction
+[Google BigQuery](https://cloud.google.com/bigquery/public-data/stackoverflow) will allow you to access the SO dataset using SQL queries, but since I'm not looking to answer specific questions, it seemed better to just download the raw data. All Stack Exchange content are dumped on a quarterly basis as `.7z` files and can be downloaded through the [Internet Archive](https://archive.org/download/stackexchange). Some of the files are massive: the SO posts file is over 12Gb, which when uncompressed gives a 61Gb XML file. Downloading took a very long time (4 hours for a 12Gb file), which I suspect is due to the fact that there are no mirrors in Europe.
 
 I also needed to download the [readme.txt](https://ia800107.us.archive.org/27/items/stackexchange/readme.txt) file, which describes the dataset schema so I can actually interpret the XML file. A typical line in the `Posts.xml` file looks like this in plain text:
 ```
