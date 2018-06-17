@@ -1,3 +1,8 @@
+title: Sue Liu blog
+description: "The trials and tribulations of running data science experiments."
+
+
+# Build settings
 theme: jekyll-theme-slate
 markdown: kramdown
-title: Sue Liu blog
+
