@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Stack Overflow question recommender - first steps"
+title: "Stack Overflow question recommender"
+excerpt: "First steps in building a question recommender using SO data"
 date: 2018-06-17 11:00:00
 ---
 <img src="/figures/stackoverflow.png" width="10%" />
