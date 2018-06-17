@@ -4,6 +4,8 @@ title: "Stack Overflow question recommender"
 excerpt: "First steps in building a question recommender using SO data"
 date: 2018-06-17 11:00:00
 ---
+# Stack Overflow Question Recommender
+
 <img src="/figures/stackoverflow.png" width="10%" />
 As a computer scientist, when I'm stuck on some technical problem Stack Overflow is the first place I look for answers. Just a minute ago I searched for "how to save Github credentials on the commandline", and probably not for the first time either.  How to remember previously searched for answers is a serious problem, but let's leave that for another day.
 
