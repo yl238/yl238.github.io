@@ -1,7 +1,7 @@
 title: Sue's blog
-
+description: "Data, machine learning and philosophy"
 
 # Build settings
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 markdown: kramdown
 
