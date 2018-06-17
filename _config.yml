@@ -5,3 +5,4 @@ description: "Data, machine learning and philosophy"
 theme: jekyll-theme-cayman
 markdown: kramdown
 
+permalink: pretty
