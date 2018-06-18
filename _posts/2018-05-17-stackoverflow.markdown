@@ -22,11 +22,22 @@ Finding similar items is a well-known problem in information retrieval and there
 Jupyter notebooks for the project can be found at [this repository](https://github.com/yl238/stackoverflow).
 
 ## Data Extraction
+
 [Google BigQuery](https://cloud.google.com/bigquery/public-data/stackoverflow) will allow you to access the SO dataset using SQL queries, but since I'm not looking to answer specific questions, it seemed better to just download the raw data. All Stack Exchange content are dumped on a quarterly basis as `.7z` files and can be downloaded through the [Internet Archive](https://archive.org/download/stackexchange). Some of the files are massive: the SO posts file is over 12Gb, which when uncompressed gives a 61Gb XML file. Downloading took a very long time (4 hours for a 12Gb file), which I suspect is due to the fact that there are no mirrors in Europe.
 
 I also needed to download the [readme.txt](https://ia800107.us.archive.org/27/items/stackexchange/readme.txt) file, which describes the dataset schema. A typical line in the `Posts.xml` file looks like this in plain text:
-```
+
+``` text
 <row Id="13" PostTypeId="1" CreationDate="2008-08-01T00:42:38.903" Score="529" ViewCount="153785" Body="&lt;p&gt;Is there any standard way for a Web Server to be able to determine a user's timezone within a web page? &lt;/p&gt;&#xA;&#xA;&lt;p&gt;Perhaps from an HTTP header or part of the user-agent string?&lt;/p&gt;&#xA;" OwnerUserId="9" LastEditorUserId="5321363" LastEditorDisplayName="Rich B" LastEditDate="2018-05-30T15:55:48.913" LastActivityDate="2018-05-30T15:56:46.080" Title="Determine a User's Timezone" Tags="&lt;javascript&gt;&lt;html&gt;&lt;browser&gt;&lt;timezone&gt;&lt;timezoneoffset&gt;" AnswerCount="25" CommentCount="6" FavoriteCount="135" />
 ```
+
 The schema tells us that `PostTypeId` is 1 for 'question' and 2 for 'answer'. In this first iteration let's ignore the answers and simply look at the questions. Useful fields are `Body`, `Title` and `Tags`. The Python module [`xml.etree.elementTree`](https://docs.python.org/3/library/xml.etree.elementtree.html) implements an efficient API for parsing XML so we can extract these fields for each question. We'll also do some data cleaning (e.g. removing brackets around tag names) and save it as a CSV file.
+
+However, the `Posts.xml` file is huge and if we try to load the entire dataset into memory it will crash the machine. A relatively simple way to deal with this (instead of fiddling with the `lxml` library) is simply to split the dataset into smaller components:
+
+``` sh
+split -C 200m --numeric-suffixes Posts.xml Posts
+```
+
+The above command splits the `Posts.xml` file into 200Mb files and creates files of the form `Post00`, `Post01`,...etc.
 
