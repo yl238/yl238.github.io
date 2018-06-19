@@ -39,5 +39,30 @@ However, the `Posts.xml` file is huge and if we try to load the entire dataset i
 split -C 200m --numeric-suffixes Posts.xml Posts
 ```
 
-The above command splits the `Posts.xml` file into 200Mb files and creates files of the form `Post00`, `Post01`,...etc.
+The above command splits the `Posts.xml` file into 200Mb files and creates files of the form `Post00`, `Post01`,...etc. To standardise the format we strip the first \<Posts\> tag from the first file and the corresponding \</Posts\> tag at the end of the last file. 
+
+## Data Pre-processing
+
+The body text of the XML file is filled with HTML tags which are not useful to our analysis, so they need to be removed. The Python module [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#) will do this for us. Also, we need to split the 'Tags' from a string enclosed in brackets to a list of strings, each of which is a topic. This calls for some regex action. The code is not pretty but it does the job. Now we need to save the cleaned data into a database. I decided to use MongoDB since documents are JSON files and there are well supported JSON parsing libraries in Python - after all, JSON string can easily be converted into dictionaries.
+
+Now each JSON entry in the database looks like this
+
+``` json
+{'AcceptedAnswerId': '33680145',
+ 'AnswerCount': '1',
+ 'Body': 'How can field of type string be included in the result set of an aggregation?For example given the following mapping:Sample data:How can the field  be included in result set of the aggregation:',
+ 'CommentCount': '1',
+ 'CreationDate': '2015-11-12T19:02:43.173',
+ 'Id': '33679237',
+ 'LastActivityDate': '2015-11-12T19:53:19.493',
+ 'LastEditDate': '2015-11-12T19:23:58.843',
+ 'LastEditorUserId': '1128088',
+ 'OwnerUserId': '1128088',
+ 'PostTypeId': '1',
+ 'Score': '0',
+ 'Tags': ['elasticsearch'],
+ 'Title': 'Elasticsearch include field in result set of aggregation',
+ 'ViewCount': '42',
+ '_id': ObjectId('5b28bccdaea650413b8f28ff')}
+```
 
