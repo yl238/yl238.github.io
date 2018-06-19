@@ -47,7 +47,7 @@ The body text of the XML file is filled with HTML tags which are not useful to o
 
 Now each JSON entry in the database looks like this
 
-``` json
+``` 
 {'AcceptedAnswerId': '33680145',
  'AnswerCount': '1',
  'Body': 'How can field of type string be included in the result set of an aggregation?For example given the following mapping:Sample data:How can the field  be included in result set of the aggregation:',
