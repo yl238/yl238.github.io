@@ -1,3 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Obsidian on Sue's Blog</title><link>https://yl238.github.io/tags/obsidian/</link><description>Recent content in Obsidian on Sue's Blog</description><generator>Hugo -- 0.147.1</generator><language>en-us</language><lastBuildDate>Sun, 04 May 2025 17:16:10 +0100</lastBuildDate><atom:link href="https://yl238.github.io/tags/obsidian/index.xml" rel="self" type="application/rss+xml"/><item><title>How I use Obsidian</title><link>https://yl238.github.io/posts/using-obsidian/</link><pubDate>Sun, 04 May 2025 17:16:10 +0100</pubDate><guid>https://yl238.github.io/posts/using-obsidian/</guid><description>&lt;p>&lt;a href="https://obsidian.md/">Obsidian&lt;/a> is an extremely versatile note-taking and knowledge-management app that uses plain text Markdown files stored locally. It&amp;rsquo;s great at creating connections between notes through backlinks, and many people use it to build personal knowledge bases. Furthermore, its flexibility allows it to be used in many different ways. This post describes how I use Obsidian in my professional life and will hopefully be of interest to others.&lt;/p>
 &lt;h2 id="obsidian-for-managers">Obsidian for Managers&lt;/h2>
-&lt;p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&amp;rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.&lt;/p></description></item></channel></rss>
+&lt;p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&amp;rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.&lt;/p></description><content:encoded><![CDATA[<p><a href="https://obsidian.md/">Obsidian</a> is an extremely versatile note-taking and knowledge-management app that uses plain text Markdown files stored locally. It&rsquo;s great at creating connections between notes through backlinks, and many people use it to build personal knowledge bases. Furthermore, its flexibility allows it to be used in many different ways. This post describes how I use Obsidian in my professional life and will hopefully be of interest to others.</p>
+<h2 id="obsidian-for-managers">Obsidian for Managers</h2>
+<p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.</p>
+<h2 id="how-i-use-obsidian">How I use Obsidian</h2>
+<ul>
+<li>I take a <em>Daily Notes-centric</em> approach in Obsidian. Every day I create a new note using a template with headers such as <code>Tasks</code>, <code>Meetings</code>, <code>Notes</code>, <code>Review</code>, and <code>Summary</code>, which I update throughout the day. Using the Dataview plugin, the note also shows links to all the notes I’ve created or modified that day, making it easy to stay on top of what I’ve worked on. For this to work I make sure all new notes have the <code>date</code> property automatically populated.</li>
+</ul>
+<figure>
+    <img loading="lazy" src="/posts/using-obsidian/daily-notes.png"
+         alt="Obsidian daily note"/> <figcaption>
+            <p>Figure 1. What my Obsidian Daily Note looks like. Theme: Minimal, Color scheme: Flexoki.</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>I use tags extensively to classify and easily find my notes. For each project, I assign a tag such as <code>&lt;company name&gt;/&lt;project&gt;</code>, and since notes can have multiple tags, it&rsquo;s simple to connect them across different contexts.</li>
+<li>Since I attend a lot of meetings, creating a meeting note for each one is the only way I can stay organized. I use another template for this, which includes properties like <code>tags</code>, <code>date</code>, <code>project</code>, <code>topic</code>, and <code>attendees</code> that I fill when I create the note. Each meeting note also gets a unique Zettelkasten-style name, like <code>20240621093326 - SU</code>, which makes them easy to reference later. These notes help me capture key points and decisions from every meeting.</li>
+</ul>
+<figure>
+    <img loading="lazy" src="/posts/using-obsidian/meeting-note-example.png"
+         alt="Obsidian meeting note"/> <figcaption>
+            <p>Figure 2. An example meeting note with filled properties.</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>I also make use of folders. Some people prefer to keep everything at the top level of their vault and rely solely on backlinks, which sounds great in theory, but it never quite worked for me as it felt too chaotic. Someone once compared a flat vault to throwing all your clothes into one drawer, and I wholeheartedly agree. But I do try to keep things simple: I only create folders for very distinct topics such as <code>Meeting Notes</code>, <code>Papers</code>, and <code>Books</code>, and rely on the Dataview plugin to extract connected notes. All my company-related notes go into a single folder, which makes cleanup easy if I ever need to remove them.</li>
+</ul>
+<h2 id="plugins">Plugins</h2>
+<p>Unlike many people, I use a lot of plugins, because they are fabulous and make life much simpler. All of these can be installed from Community Plugins within Obsidian.</p>
+<h3 id="git">Git</h3>
+<p>While I now have a subscription to Obsidian Sync for one of my vaults, I save the other one to GitHub, hence the <a href="https://github.com/Vinzent03/obsidian-git"><strong>Obsidian Git</strong></a> plugin is essential.</p>
+<h3 id="templater">Templater</h3>
+<p><strong>Templater</strong> is crucial so I can create different types of notes, e.g. daily notes, meetings, project, people, each of which have distinct properties and pre-filled tags.</p>
+<h3 id="dataview">Dataview</h3>
+<p>I use <a href="https://blacksmithgu.github.io/obsidian-dataview/"><strong>Dataview</strong></a> to organise meeting notes. It&rsquo;s simple to create a query and generate a list or a table. The following produces a list of all the meeting notes I have created today. I embed this within an Obsidian callout so it&rsquo;s highlighted.</p>
+<pre tabindex="0"><code>```dataview
+    LIST
+    FROM #meeting-notes WHERE file.cday = this.file.day
+    SORT file.ctime
+</code></pre><p>At the end of the day I can review all the meetings I attended. Similarly, I use Dataview to generate lists of all the notes I have created or edited today.</p>
+<p>Another place I use Dataview is to maintain a top-level page for each project. I use it to track information about the team members who work on the project, the tasks that need to be done, the Markdown pages related to the projects, and the meetings I attended on each project. This is why I use tags for each task I need to do so I can query them later. Each of these project pages is also pinned so I can access it easily. I prune the meeting notes now and again when they become irrelevant. Reviewing them is interesting as I can track the progress of a project.</p>
+<h3 id="quickadd">QuickAdd</h3>
+<p>I love <a href="https://quickadd.obsidian.guide/docs/"><strong>QuickAdd</strong></a>. It allows me to add thoughts and tasks almost immediately into my Daily Notes as they occur. Saying &ldquo;I&rsquo;ll write it down later&rdquo; normally means I don&rsquo;t write it down at all. What is particularly nice is that it has autocomplete for links and tags.</p>
+<h3 id="tasks">Tasks</h3>
+<p>Another plugin I use extensively is <a href="https://github.com/obsidian-tasks-group/obsidian-tasks"><strong>Tasks</strong></a>. This allows me to gather in one page all the tasks I still need to complete and when they need to be completed. This is pinned on the top bar. I could of course use Dataview to do this, but Tasks is much easier to use.</p>
+<h3 id="omnisearch">Omnisearch</h3>
+<p>One of the most useful plugins I have so far is <a href="https://github.com/scambier/obsidian-omnisearch"><strong>Omnisearch</strong></a>. The search capability of core Obsidian is quite basic, and now that my vault is very large it&rsquo;s very important to have a good full-text search engine.</p>
+<h3 id="pomodoro-status-bar">Pomodoro Status Bar</h3>
+<p>One plugin that I started to use frequently is the <strong>Pomodoro status bar</strong>. Because of my back problems my physiotherapist recommended I stand up and stretch every half an hour or so. It&rsquo;s easy to set 30-minute pomodoros and use the system notifications to alert myself to get up. I pause it when I go for a long break such as lunch, so at the end of the day I can count the number of pomodoros to see how many hours I have actually worked.</p>
+<h3 id="book-search">Book Search</h3>
+<p>The <a href="https://github.com/anpigon/obsidian-book-search-plugin?tab=readme-ov-file"><strong>Book Search</strong></a> plugin is very nice - I can search for any book using the Google Books API and generate a note with all the book&rsquo;s details such as authors, categories, number of pages etc automatically populated. I can then write comments about the book in the note, and use Dataview to see how many books and what types of books I have read each year.</p>
+<h3 id="copilot">Copilot</h3>
+<p>The newest addition is <a href="https://www.obsidiancopilot.com/en"><strong>Copilot</strong></a>, which allows me to use a range of LLMs (both through APIs or via Ollama) for both chat and querying my vault. I have OpenAI API so I use the text-embedding-3-small model to index my vault and use GPT-4o to query. It&rsquo;s remarkably cheap if your vault is not huge.</p>
+<p>I have installed a lot of other plugins, but they are mostly cosmetic, such as counting how many files are in a folder. Even <a href="https://github.com/mProjectsCode/obsidian-meta-bind-plugin"><strong>Meta-bind</strong></a> that I use to create buttons as the same button is copied across multiple files in the vault. I&rsquo;m thinking that in the future I can create a button to run some LLM-powered processing.</p>
+<p>Now that Obsidian supports web browser in v1.8 it means I never have to leave it. 😀</p>
+]]></content:encoded></item></channel></rss>

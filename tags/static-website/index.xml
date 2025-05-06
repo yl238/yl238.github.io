@@ -1,3 +1,166 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Static-Website on Sue's Blog</title><link>https://yl238.github.io/tags/static-website/</link><description>Recent content in Static-Website on Sue's Blog</description><generator>Hugo -- 0.147.1</generator><language>en-us</language><lastBuildDate>Sat, 03 May 2025 20:50:10 +0100</lastBuildDate><atom:link href="https://yl238.github.io/tags/static-website/index.xml" rel="self" type="application/rss+xml"/><item><title>Create a Static Blog with Hugo, PaperMod and Github Pages</title><link>https://yl238.github.io/posts/hugo-papermod-gh/</link><pubDate>Sat, 03 May 2025 20:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/hugo-papermod-gh/</guid><description>&lt;p>This article describes how I built this blog using the &lt;a href="https://gohugo.io/">Hugo&lt;/a> framework and the &lt;a href="https://git.io/hugopapermod">PaperMod&lt;/a> theme; and how to host it on &lt;a href="https://pages.github.com/">GitHub Pages&lt;/a>. Unlike most tutorials, my approach stores the source code in a private GitHub repository while serving the site from a public GitHub Pages repository.&lt;/p>
 &lt;h2 id="hugo">Hugo&lt;/h2>
-&lt;p>&lt;a href="https://gohugo.io/">Hugo&lt;/a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.&lt;/p></description></item></channel></rss>
+&lt;p>&lt;a href="https://gohugo.io/">Hugo&lt;/a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.&lt;/p></description><content:encoded><![CDATA[<p>This article describes how I built this blog using the <a href="https://gohugo.io/">Hugo</a> framework and the <a href="https://git.io/hugopapermod">PaperMod</a> theme; and how to host it on <a href="https://pages.github.com/">GitHub Pages</a>. Unlike most tutorials, my approach stores the source code in a private GitHub repository while serving the site from a public GitHub Pages repository.</p>
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://gohugo.io/">Hugo</a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.</p>
+<h2 id="github-pages">GitHub Pages</h2>
+<p><a href="https://pages.github.com/">GitHub Pages</a> is a feature provided by Github that allows you to directly host static websites from a Github repository. It is free and simple to use, and clearly version controlled.</p>
+<h2 id="steps-to-create-and-host-a-static-blog">Steps to Create and Host a Static Blog</h2>
+<p>There are plenty of resources on the internet on how to create a static website with Hugo, including their own <a href="https://gohugo.io/getting-started/quick-start/">getting started</a> instructions, and how to <a href="https://pages.github.co">host static sites on Github Pages</a>. However, the repository served by GitHub Pages need to be public, and each time we need to build the site on the server.</p>
+<h3 id="two-repo-workflow">Two-Repo Workflow</h3>
+<p>A better solution is to keep the Hugo source code in a private repo, and when it&rsquo;s ready to be published, generate the final static site and push it to a second public repo. Since Hugo generates plain HTML files, Github Pages can serve them without needing to run Hugo itself. There are multiple advantages of doing this, including</p>
+<ul>
+<li>Fast load time since no build needed on server</li>
+<li>No Hugo setup required on GitHub</li>
+<li>The Hugo source code can be kept private or cleanly separated</li>
+<li>Easier to maintain the &ldquo;published version&rdquo;</li>
+</ul>
+<p>The disadvantages are that you can&rsquo;t edit the website directly on Github easily and the workflow is more complex. However, we can automate this using <a href="https://github.com/features/actions">GitHub Actions</a>. It has been a little painful to set this up, so I&rsquo;m documenting the process in case someone else wants to do the same thing.</p>
+<h3 id="create-github-repositories">Create GitHub Repositories</h3>
+<p>We need to create <strong>two</strong> GitHub repositories, one to keep the Hugo source code, and the other contains the built static site. Go to GitHub and create the following repositories:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Repository</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>hugo-site</code> (Private or Public)</td>
+          <td>Hugo source where we create content, edit theme, configure site</td>
+      </tr>
+      <tr>
+          <td><code>username.github.io</code> (Public)</td>
+          <td>GitHub Page where the built site (HTML/CSS/JS) files live</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="install-hugo-and-create-new-site">Install Hugo and Create New Site</h3>
+<p>On MacOS you can install Hugo using Homebrew by running <code>brew install hugo</code>. For other operating systems check <a href="https://gohugo.io/installation/">Hugo&rsquo;s installation documentation</a>.</p>
+<p>To create a new site we run on the terminal
+<code>hugo new site hugo-site --format yaml</code>.
+This generates a folder <code>hugo-site</code> with the following content:</p>
+<pre tabindex="0"><code>hugo-site
+├── archetypes
+│   └── default.md
+├── assets
+├── content
+├── data
+├── hugo.yaml
+├── i18n
+├── layouts
+├── static
+└── themes
+</code></pre><p>Using the <code>yaml</code> format makes the configuration file a little easier to read. We commit the files to the repo on GitHub:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-site
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:username/hugo-site.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin main       
+</span></span></code></pre></div><h3 id="add-theme-and-content-to-site">Add Theme and Content to Site</h3>
+<p>The theme I chose was <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Installation">PaperMod</a>, which needed to be added as a git submodule:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-site
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;theme: PaperMod&#39;</span> &gt;&gt; hugo.yaml
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive <span style="color:#75715e"># needed when you reclone your repo (submodules may not get cloned automatically)</span>
+</span></span></code></pre></div><p>To generate a new post, run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/hugo-papermod-gh.md
+</span></span></code></pre></div><p>This will create the Markdown file in the <code>content/posts/</code> folder, and automatically add a frontmatter:</p>
+<pre tabindex="0"><code>---
+title: &#34;Hugo PaperMod GH&#34;
+date: 2025-05-03T20:50:10+01:00
+draft: true
+---
+</code></pre><p>Edit content, then run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo --minify --cleanDestinationDir
+</span></span></code></pre></div><p>This will generate a <code>public/</code> folder, which is what will be pushed to <code>username.github.io</code>. By default Hugo builds <em>incrementally</em>, so old files won&rsquo;t be deleted. the <code>cleanDestinationDir</code> flag forces a complete update of the <code>public/</code> folder.</p>
+<p>You can check whether the build was successful locally by running</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo serve -D
+</span></span></code></pre></div><p>The <code>-D</code> flag builds drafts, which are by default skipped by Hugo.</p>
+<p>Finally, make sure you edit the <code>.gitignore</code> file in <code>hugo-site</code> and add <code>public/</code> to skip tracking this folder.</p>
+<p>We will discuss how to customise PaperMod at a later point.</p>
+<h3 id="publish-to-github-pages-repository">Publish to GitHub Pages Repository</h3>
+<p>To publish the newly generated static site in <code>public/</code> to the GitHub Pages repo <code>username.github.io</code>, the easiest way is to turn <code>public/</code> into a Git repo that points to the GitHub Pages repo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:username/username.github.io.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Publish Site&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git push -u origin main --force
+</span></span></code></pre></div><p>Now the site is live at <code>https://username.github.io</code>.</p>
+<h2 id="automate-with-github-actions">Automate with GitHub Actions</h2>
+<p>We can automate this build and deploy process from <code>hugo-site</code> so that on every push to <code>main</code>, GitHub will build Hugo and push <code>public/</code> to <code>username.github.io</code>. This requires a GitHub Personal Access Token.</p>
+<h3 id="create-personal-access-token-on-github">Create Personal Access Token on GitHub</h3>
+<p>In the browser from your GitHub page, go to
+<strong>Settings -&gt; Developer Settings -&gt; Personal Access Tokens -&gt; Tokens (classic) -&gt; Generate new token (classic)</strong></p>
+<img src="/posts/hugo-papermod-gh/github-personal-access-token-page.png" /> 
+<p>Set scopes to be <code>repo</code>: Full control of private and public repos. This is required to push to <code>username.github.io</code>. Copy the token, which we will need only once to create a GitHub secret.</p>
+<h3 id="create-a-github-secret">Create a GitHub Secret</h3>
+<p>In the <code>hugo-site</code> repository:</p>
+<ul>
+<li>Go to <strong>Settings -&gt; Secrets and variables -&gt; Actions -&gt; New repository secret</strong>
+<ul>
+<li>Name: <code>GH_PAGES_TOKEN</code></li>
+<li>Value: <em>Paste your token</em>
+This will be used by GitHub Actions to push to <code>username.github.io</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="set-up-github-actions-workflow-in-hugo-site">Set up GitHub Actions Workflow in <code>hugo-site</code></h3>
+<p>In <code>hugo-site</code>, create the folder and file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.github/workflows/deploy.yml
+</span></span></code></pre></div><p>and populate it with the following config:</p>
+<details>
+<summary>Click to expand code</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo site to GitHub Pages repo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main </span> <span style="color:#75715e"># Change if your branch is called differently</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout source</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#ae81ff">recursive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build site</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify --cleanDestinationDir</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">List generated files</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">ls -la ./public</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages repo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">username/username.github.io</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.GH_PAGES_TOKEN }}</span>
+</span></span></code></pre></div><p><code>external_repository</code> is where the HTML site should go, <code>publish_dir</code> is the Hugo <code>public/</code> folder, and <code>personal_token</code> is the secret we have created (<code>GH_PAGES_TOKEN</code>).</p>
+</details>
+<p>The workflows config file is greatly simplified by the work done by Shohei Ueda who created the GitHub Actions <a href="https://github.com/peaceiris/actions-hugo">to install Hugo to a virtual machine</a> to <a href="https://github.com/peaceiris/actions-gh-pages">deploy static files to GitHub Pages</a>.</p>
+<h3 id="final-step-push-hugo-site-to-trigger-build">Final Step: Push Hugo Site to Trigger Build</h3>
+<p>In <code>hugo-site</code>, run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Update content&#34;</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><p>GitHub Actions will trigger Hugo build and push the HTML output to <code>username.github.io</code> repo, which is published immediately. 🚀</p>
+<p><strong>Note</strong>: this will overwrite <code>username.github.io</code> with the new built site every time we push to <code>hugo-site</code>. We can check the deploy process in GitHub Actions tab.
+<img src="/posts/hugo-papermod-gh/github-actions.png"></p>
+<h3 id="wrapping-up">Wrapping Up</h3>
+<p>Hopefully this post will help you build your own static site using Hugo and GitHub Pages. The PaperMod theme allows you to make nice-looking sites out of the box, but in a following post we&rsquo;ll discuss what we can customise.</p>
+]]></content:encoded></item></channel></rss>

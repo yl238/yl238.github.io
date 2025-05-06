@@ -4,4 +4,11 @@
 &lt;a href="https://yl238.github.io/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf" download style="display: inline-block; padding: 10px 20px; background-color: #007acc; color: white; border-radius: 5px; text-decoration: none;">
 ⬇️ Download Full PDF
 &lt;/a>
-&lt;/div></description></item></channel></rss>
+&lt;/div></description><content:encoded><![CDATA[<p>Recently I gave a presentation at the <a href="https://www.meetup.com/edinburgh-data-science-ai/">Edinburgh Data Science Meetup</a> on time-series forecasting. In particular, comparing the differences between traditional methods such as ARIMA and Exponential Smoothing with the latest Deep Learning models. Hopefully I will turn these into blog posts in the coming months, but in the meantime you can download the presentation here.</p>
+<iframe src="/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf#page=1" type="application/pdf" width="100%" height="400px"></iframe>
+<div style="margin-top: 20px;">
+<a href="/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf" download style="display: inline-block; padding: 10px 20px; background-color: #007acc; color: white; border-radius: 5px; text-decoration: none;">
+⬇️ Download Full PDF
+</a>
+</div>
+]]></content:encoded></item></channel></rss>

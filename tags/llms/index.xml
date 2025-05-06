@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>LLMs on Sue's Blog</title><link>https://yl238.github.io/tags/llms/</link><description>Recent content in LLMs on Sue's Blog</description><generator>Hugo -- 0.147.1</generator><language>en-us</language><lastBuildDate>Sun, 04 May 2025 10:50:10 +0100</lastBuildDate><atom:link href="https://yl238.github.io/tags/llms/index.xml" rel="self" type="application/rss+xml"/><item><title>Using LLMs to Evaluate Youtube Videos</title><link>https://yl238.github.io/posts/summarise-youtube-video/</link><pubDate>Sun, 04 May 2025 10:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/summarise-youtube-video/</guid><description>&lt;p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>LLMs on Sue's Blog</title><link>https://yl238.github.io/tags/llms/</link><description>Recent content in LLMs on Sue's Blog</description><generator>Hugo -- 0.147.1</generator><language>en-us</language><lastBuildDate>Sun, 04 May 2025 10:50:10 +0100</lastBuildDate><atom:link href="https://yl238.github.io/tags/llms/index.xml" rel="self" type="application/rss+xml"/><item><title>Using LLMs to Evaluate Youtube Videos</title><link>https://yl238.github.io/posts/summarise-youtube-video/</link><pubDate>Sun, 04 May 2025 10:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/summarise-youtube-video/</guid><description>&lt;p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.&lt;/p></description><content:encoded><![CDATA[<p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.</p>
+<p>Here is <a href="https://github.com/yl238/llm-personal-assistant">path to the repo</a>.</p>
+<h2 id="example-usage">Example usage</h2>
+<p>Before running the code, be sure to install the required packages. Also, create a <code>.env</code> file (or set environment variables) for:</p>
+<ul>
+<li><code>WHISPER_PATH</code>- the local OpenAI Whisper installation path, for optional local transcription</li>
+<li><code>OPENAI_API_KEY</code>- your OpenAI API key</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span><span style="display:flex;"><span>streamlit run streamlit_app.py
+</span></span></code></pre></div><p>This will open the Streamlit app on a web browser, where you can paste the URL of the Youtube video you want to evaluate. The response will be displayed on the page. Using GPT-4o you summarisation videos with lengths up to an hour.</p>
+<img src="/posts/summarise-youtube-video/streamlit-app.png" width="90%"/>
+<p>If you don&rsquo;t want to spend money on the API, you can run the script <a href="https://github.com/yl238/llm-personal-assistant/blob/main/youtube_evaluator.py">youtube_evaluator.py</a> in a terminal. When you are asked whether you want to only create the prompt, type <code>'y'</code>. This will simply download the transcript and create a file called <code>prompt.txt</code>, which contains the prompt along with the full text of the transcript. You can the copy/paste the text into the web console of ChatGPT, Gemini or Grok and see the response there. This is the way if you want to use a provider other than OpenAI.</p>
+<p>We use as an example a video which attempts to <a href="https://www.youtube.com/watch?v=ZXiruGOCn9s">explain Transformers in 6 minutes</a>.</p>
+<p>Run in the terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python youtube_evaluator.py
+</span></span></code></pre></div><pre tabindex="0"><code>Enter a YouTube video URL: https://www.youtube.com/watch?v=ZXiruGOCn9s
+Only create LLM prompt? (y/n): y
+</code></pre><p>This will generate the <code>prompt.txt</code> file. The response returned from ChatGPT informs me that this is actually an overview of GPT-3, so I&rsquo;m not watching it! Now I&rsquo;ve saved myself 6 minutes.</p>
+<h2 id="how-it-works">How it works</h2>
+<ol>
+<li>
+<p><strong>Transcript Acquisition:</strong><br>
+The <code>YouTubeVideoEvaluator</code> first tries to retrieve a transcript via the <a href="https://pypi.org/project/youtube-transcript-api/">YouTube Transcript API</a>. If it can’t find one (or an error occurs), it downloads the video (preferring an audio-only stream) using <a href="https://pytube.io/">pytube</a> and passes the downloaded file to <code>AudioTranscriber</code> to generate a transcript.</p>
+</li>
+<li>
+<p><strong>Transcription: (Optional)</strong><br>
+The <code>AudioTranscriber</code> uses ffmpeg to convert the input file to WAV and then calls the Whisper CLI to perform the transcription. (The <code>inplace</code> flag is set to <code>False</code> when processing a downloaded file so the original isn’t overwritten.) Note this is only called when the transcription is not available, and requires you to set up OpenAI&rsquo;s Whisper model locally. I use the <a href="https://github.com/ggml-org/whisper.cpp">C++ port for MacOS</a></p>
+</li>
+<li>
+<p><strong>LLM Processing:</strong><br>
+The generated (or API-provided) transcript is passed to the <code>LLMProcessor</code>, which sends it to OpenAI’s ChatCompletion endpoint. The prompt instructs the LLM to summarise and extract the main points with timestamps. You can swap this for another LLM or update the prompt text as needed.</p>
+</li>
+<li>
+<p><strong>Output:</strong><br>
+The final summary is shown in the Streamlit app or printed to the console.</p>
+</li>
+</ol>
+<p>Finally, I&rsquo;m happy to hear any suggestions for improvements or new ideas on how to use LLMs!</p>
+]]></content:encoded></item></channel></rss>

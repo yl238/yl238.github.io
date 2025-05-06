@@ -1,12 +1,352 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sue's Blog</title><link>https://yl238.github.io/</link><description>Recent content on Sue's Blog</description><generator>Hugo -- 0.147.1</generator><language>en-us</language><lastBuildDate>Sun, 04 May 2025 17:16:10 +0100</lastBuildDate><atom:link href="https://yl238.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>How I use Obsidian</title><link>https://yl238.github.io/posts/using-obsidian/</link><pubDate>Sun, 04 May 2025 17:16:10 +0100</pubDate><guid>https://yl238.github.io/posts/using-obsidian/</guid><description>&lt;p>&lt;a href="https://obsidian.md/">Obsidian&lt;/a> is an extremely versatile note-taking and knowledge-management app that uses plain text Markdown files stored locally. It&amp;rsquo;s great at creating connections between notes through backlinks, and many people use it to build personal knowledge bases. Furthermore, its flexibility allows it to be used in many different ways. This post describes how I use Obsidian in my professional life and will hopefully be of interest to others.&lt;/p>
 &lt;h2 id="obsidian-for-managers">Obsidian for Managers&lt;/h2>
-&lt;p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&amp;rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.&lt;/p></description></item><item><title>About me 🌱</title><link>https://yl238.github.io/about/</link><pubDate>Sun, 04 May 2025 16:26:39 +0100</pubDate><guid>https://yl238.github.io/about/</guid><description>&lt;p>Hi. I&amp;rsquo;m Sue Liu, currently a machine learning engineering manager at &lt;a href="https://www.kingfisher.com/">Kingfisher Plc&lt;/a>. Prior to joining industry I worked on climate science research in academia.&lt;/p>
-&lt;p>In my spare time I play the &lt;a href="https://youtu.be/mW0kvbJikuU?t=19">Baroque lute&lt;/a> and run marathons.&lt;/p></description></item><item><title>Using LLMs to Evaluate Youtube Videos</title><link>https://yl238.github.io/posts/summarise-youtube-video/</link><pubDate>Sun, 04 May 2025 10:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/summarise-youtube-video/</guid><description>&lt;p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.&lt;/p></description></item><item><title>Create a Static Blog with Hugo, PaperMod and Github Pages</title><link>https://yl238.github.io/posts/hugo-papermod-gh/</link><pubDate>Sat, 03 May 2025 20:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/hugo-papermod-gh/</guid><description>&lt;p>This article describes how I built this blog using the &lt;a href="https://gohugo.io/">Hugo&lt;/a> framework and the &lt;a href="https://git.io/hugopapermod">PaperMod&lt;/a> theme; and how to host it on &lt;a href="https://pages.github.com/">GitHub Pages&lt;/a>. Unlike most tutorials, my approach stores the source code in a private GitHub repository while serving the site from a public GitHub Pages repository.&lt;/p>
+&lt;p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&amp;rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.&lt;/p></description><content:encoded><![CDATA[<p><a href="https://obsidian.md/">Obsidian</a> is an extremely versatile note-taking and knowledge-management app that uses plain text Markdown files stored locally. It&rsquo;s great at creating connections between notes through backlinks, and many people use it to build personal knowledge bases. Furthermore, its flexibility allows it to be used in many different ways. This post describes how I use Obsidian in my professional life and will hopefully be of interest to others.</p>
+<h2 id="obsidian-for-managers">Obsidian for Managers</h2>
+<p>I manage three machine learning engineering teams at a tech company, each working on completely different projects. I need to run stand-ups, attend various meetings with stakeholders, interview candidates, and try to do some hands-on development. I am not an expert in the areas I manage, but I need to have a high-level understanding and be able to provide direction. This means I must constantly learn about many areas, both technical and otherwise, and review what I&rsquo;ve learned. What I need is a way to easily capture information, review it later, and take action. Obsidian is perfect for this purpose.</p>
+<h2 id="how-i-use-obsidian">How I use Obsidian</h2>
+<ul>
+<li>I take a <em>Daily Notes-centric</em> approach in Obsidian. Every day I create a new note using a template with headers such as <code>Tasks</code>, <code>Meetings</code>, <code>Notes</code>, <code>Review</code>, and <code>Summary</code>, which I update throughout the day. Using the Dataview plugin, the note also shows links to all the notes I’ve created or modified that day, making it easy to stay on top of what I’ve worked on. For this to work I make sure all new notes have the <code>date</code> property automatically populated.</li>
+</ul>
+<figure>
+    <img loading="lazy" src="/posts/using-obsidian/daily-notes.png"
+         alt="Obsidian daily note"/> <figcaption>
+            <p>Figure 1. What my Obsidian Daily Note looks like. Theme: Minimal, Color scheme: Flexoki.</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>I use tags extensively to classify and easily find my notes. For each project, I assign a tag such as <code>&lt;company name&gt;/&lt;project&gt;</code>, and since notes can have multiple tags, it&rsquo;s simple to connect them across different contexts.</li>
+<li>Since I attend a lot of meetings, creating a meeting note for each one is the only way I can stay organized. I use another template for this, which includes properties like <code>tags</code>, <code>date</code>, <code>project</code>, <code>topic</code>, and <code>attendees</code> that I fill when I create the note. Each meeting note also gets a unique Zettelkasten-style name, like <code>20240621093326 - SU</code>, which makes them easy to reference later. These notes help me capture key points and decisions from every meeting.</li>
+</ul>
+<figure>
+    <img loading="lazy" src="/posts/using-obsidian/meeting-note-example.png"
+         alt="Obsidian meeting note"/> <figcaption>
+            <p>Figure 2. An example meeting note with filled properties.</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>I also make use of folders. Some people prefer to keep everything at the top level of their vault and rely solely on backlinks, which sounds great in theory, but it never quite worked for me as it felt too chaotic. Someone once compared a flat vault to throwing all your clothes into one drawer, and I wholeheartedly agree. But I do try to keep things simple: I only create folders for very distinct topics such as <code>Meeting Notes</code>, <code>Papers</code>, and <code>Books</code>, and rely on the Dataview plugin to extract connected notes. All my company-related notes go into a single folder, which makes cleanup easy if I ever need to remove them.</li>
+</ul>
+<h2 id="plugins">Plugins</h2>
+<p>Unlike many people, I use a lot of plugins, because they are fabulous and make life much simpler. All of these can be installed from Community Plugins within Obsidian.</p>
+<h3 id="git">Git</h3>
+<p>While I now have a subscription to Obsidian Sync for one of my vaults, I save the other one to GitHub, hence the <a href="https://github.com/Vinzent03/obsidian-git"><strong>Obsidian Git</strong></a> plugin is essential.</p>
+<h3 id="templater">Templater</h3>
+<p><strong>Templater</strong> is crucial so I can create different types of notes, e.g. daily notes, meetings, project, people, each of which have distinct properties and pre-filled tags.</p>
+<h3 id="dataview">Dataview</h3>
+<p>I use <a href="https://blacksmithgu.github.io/obsidian-dataview/"><strong>Dataview</strong></a> to organise meeting notes. It&rsquo;s simple to create a query and generate a list or a table. The following produces a list of all the meeting notes I have created today. I embed this within an Obsidian callout so it&rsquo;s highlighted.</p>
+<pre tabindex="0"><code>```dataview
+    LIST
+    FROM #meeting-notes WHERE file.cday = this.file.day
+    SORT file.ctime
+</code></pre><p>At the end of the day I can review all the meetings I attended. Similarly, I use Dataview to generate lists of all the notes I have created or edited today.</p>
+<p>Another place I use Dataview is to maintain a top-level page for each project. I use it to track information about the team members who work on the project, the tasks that need to be done, the Markdown pages related to the projects, and the meetings I attended on each project. This is why I use tags for each task I need to do so I can query them later. Each of these project pages is also pinned so I can access it easily. I prune the meeting notes now and again when they become irrelevant. Reviewing them is interesting as I can track the progress of a project.</p>
+<h3 id="quickadd">QuickAdd</h3>
+<p>I love <a href="https://quickadd.obsidian.guide/docs/"><strong>QuickAdd</strong></a>. It allows me to add thoughts and tasks almost immediately into my Daily Notes as they occur. Saying &ldquo;I&rsquo;ll write it down later&rdquo; normally means I don&rsquo;t write it down at all. What is particularly nice is that it has autocomplete for links and tags.</p>
+<h3 id="tasks">Tasks</h3>
+<p>Another plugin I use extensively is <a href="https://github.com/obsidian-tasks-group/obsidian-tasks"><strong>Tasks</strong></a>. This allows me to gather in one page all the tasks I still need to complete and when they need to be completed. This is pinned on the top bar. I could of course use Dataview to do this, but Tasks is much easier to use.</p>
+<h3 id="omnisearch">Omnisearch</h3>
+<p>One of the most useful plugins I have so far is <a href="https://github.com/scambier/obsidian-omnisearch"><strong>Omnisearch</strong></a>. The search capability of core Obsidian is quite basic, and now that my vault is very large it&rsquo;s very important to have a good full-text search engine.</p>
+<h3 id="pomodoro-status-bar">Pomodoro Status Bar</h3>
+<p>One plugin that I started to use frequently is the <strong>Pomodoro status bar</strong>. Because of my back problems my physiotherapist recommended I stand up and stretch every half an hour or so. It&rsquo;s easy to set 30-minute pomodoros and use the system notifications to alert myself to get up. I pause it when I go for a long break such as lunch, so at the end of the day I can count the number of pomodoros to see how many hours I have actually worked.</p>
+<h3 id="book-search">Book Search</h3>
+<p>The <a href="https://github.com/anpigon/obsidian-book-search-plugin?tab=readme-ov-file"><strong>Book Search</strong></a> plugin is very nice - I can search for any book using the Google Books API and generate a note with all the book&rsquo;s details such as authors, categories, number of pages etc automatically populated. I can then write comments about the book in the note, and use Dataview to see how many books and what types of books I have read each year.</p>
+<h3 id="copilot">Copilot</h3>
+<p>The newest addition is <a href="https://www.obsidiancopilot.com/en"><strong>Copilot</strong></a>, which allows me to use a range of LLMs (both through APIs or via Ollama) for both chat and querying my vault. I have OpenAI API so I use the text-embedding-3-small model to index my vault and use GPT-4o to query. It&rsquo;s remarkably cheap if your vault is not huge.</p>
+<p>I have installed a lot of other plugins, but they are mostly cosmetic, such as counting how many files are in a folder. Even <a href="https://github.com/mProjectsCode/obsidian-meta-bind-plugin"><strong>Meta-bind</strong></a> that I use to create buttons as the same button is copied across multiple files in the vault. I&rsquo;m thinking that in the future I can create a button to run some LLM-powered processing.</p>
+<p>Now that Obsidian supports web browser in v1.8 it means I never have to leave it. 😀</p>
+]]></content:encoded></item><item><title>About me 🌱</title><link>https://yl238.github.io/about/</link><pubDate>Sun, 04 May 2025 16:26:39 +0100</pubDate><guid>https://yl238.github.io/about/</guid><description>&lt;p>Hi. I&amp;rsquo;m Sue Liu, currently a machine learning engineering manager at &lt;a href="https://www.kingfisher.com/">Kingfisher Plc&lt;/a>. Prior to joining industry I worked on climate science research in academia.&lt;/p>
+&lt;p>In my spare time I play the &lt;a href="https://youtu.be/mW0kvbJikuU?t=19">Baroque lute&lt;/a> and run marathons.&lt;/p></description><content:encoded><![CDATA[<p>Hi. I&rsquo;m Sue Liu, currently a machine learning engineering manager at <a href="https://www.kingfisher.com/">Kingfisher Plc</a>. Prior to joining industry I worked on climate science research in academia.</p>
+<p>In my spare time I play the <a href="https://youtu.be/mW0kvbJikuU?t=19">Baroque lute</a> and run marathons.</p>
+]]></content:encoded></item><item><title>Using LLMs to Evaluate Youtube Videos</title><link>https://yl238.github.io/posts/summarise-youtube-video/</link><pubDate>Sun, 04 May 2025 10:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/summarise-youtube-video/</guid><description>&lt;p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.&lt;/p></description><content:encoded><![CDATA[<p>I often get recommended YouTube videos with catchy titles but not much substance. To save time, I built a simple app that downloads the transcript of the video, feeds it to ChatGPT, and generates a quick summary, key moments, and any fresh insights the video offers. After skimming this I can decide if the video is worth watching. It’s been a huge time-saver, so I’m sharing the code here, along with a quick overview of how it works.</p>
+<p>Here is <a href="https://github.com/yl238/llm-personal-assistant">path to the repo</a>.</p>
+<h2 id="example-usage">Example usage</h2>
+<p>Before running the code, be sure to install the required packages. Also, create a <code>.env</code> file (or set environment variables) for:</p>
+<ul>
+<li><code>WHISPER_PATH</code>- the local OpenAI Whisper installation path, for optional local transcription</li>
+<li><code>OPENAI_API_KEY</code>- your OpenAI API key</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span><span style="display:flex;"><span>streamlit run streamlit_app.py
+</span></span></code></pre></div><p>This will open the Streamlit app on a web browser, where you can paste the URL of the Youtube video you want to evaluate. The response will be displayed on the page. Using GPT-4o you summarisation videos with lengths up to an hour.</p>
+<img src="/posts/summarise-youtube-video/streamlit-app.png" width="90%"/>
+<p>If you don&rsquo;t want to spend money on the API, you can run the script <a href="https://github.com/yl238/llm-personal-assistant/blob/main/youtube_evaluator.py">youtube_evaluator.py</a> in a terminal. When you are asked whether you want to only create the prompt, type <code>'y'</code>. This will simply download the transcript and create a file called <code>prompt.txt</code>, which contains the prompt along with the full text of the transcript. You can the copy/paste the text into the web console of ChatGPT, Gemini or Grok and see the response there. This is the way if you want to use a provider other than OpenAI.</p>
+<p>We use as an example a video which attempts to <a href="https://www.youtube.com/watch?v=ZXiruGOCn9s">explain Transformers in 6 minutes</a>.</p>
+<p>Run in the terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python youtube_evaluator.py
+</span></span></code></pre></div><pre tabindex="0"><code>Enter a YouTube video URL: https://www.youtube.com/watch?v=ZXiruGOCn9s
+Only create LLM prompt? (y/n): y
+</code></pre><p>This will generate the <code>prompt.txt</code> file. The response returned from ChatGPT informs me that this is actually an overview of GPT-3, so I&rsquo;m not watching it! Now I&rsquo;ve saved myself 6 minutes.</p>
+<h2 id="how-it-works">How it works</h2>
+<ol>
+<li>
+<p><strong>Transcript Acquisition:</strong><br>
+The <code>YouTubeVideoEvaluator</code> first tries to retrieve a transcript via the <a href="https://pypi.org/project/youtube-transcript-api/">YouTube Transcript API</a>. If it can’t find one (or an error occurs), it downloads the video (preferring an audio-only stream) using <a href="https://pytube.io/">pytube</a> and passes the downloaded file to <code>AudioTranscriber</code> to generate a transcript.</p>
+</li>
+<li>
+<p><strong>Transcription: (Optional)</strong><br>
+The <code>AudioTranscriber</code> uses ffmpeg to convert the input file to WAV and then calls the Whisper CLI to perform the transcription. (The <code>inplace</code> flag is set to <code>False</code> when processing a downloaded file so the original isn’t overwritten.) Note this is only called when the transcription is not available, and requires you to set up OpenAI&rsquo;s Whisper model locally. I use the <a href="https://github.com/ggml-org/whisper.cpp">C++ port for MacOS</a></p>
+</li>
+<li>
+<p><strong>LLM Processing:</strong><br>
+The generated (or API-provided) transcript is passed to the <code>LLMProcessor</code>, which sends it to OpenAI’s ChatCompletion endpoint. The prompt instructs the LLM to summarise and extract the main points with timestamps. You can swap this for another LLM or update the prompt text as needed.</p>
+</li>
+<li>
+<p><strong>Output:</strong><br>
+The final summary is shown in the Streamlit app or printed to the console.</p>
+</li>
+</ol>
+<p>Finally, I&rsquo;m happy to hear any suggestions for improvements or new ideas on how to use LLMs!</p>
+]]></content:encoded></item><item><title>Create a Static Blog with Hugo, PaperMod and Github Pages</title><link>https://yl238.github.io/posts/hugo-papermod-gh/</link><pubDate>Sat, 03 May 2025 20:50:10 +0100</pubDate><guid>https://yl238.github.io/posts/hugo-papermod-gh/</guid><description>&lt;p>This article describes how I built this blog using the &lt;a href="https://gohugo.io/">Hugo&lt;/a> framework and the &lt;a href="https://git.io/hugopapermod">PaperMod&lt;/a> theme; and how to host it on &lt;a href="https://pages.github.com/">GitHub Pages&lt;/a>. Unlike most tutorials, my approach stores the source code in a private GitHub repository while serving the site from a public GitHub Pages repository.&lt;/p>
 &lt;h2 id="hugo">Hugo&lt;/h2>
-&lt;p>&lt;a href="https://gohugo.io/">Hugo&lt;/a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.&lt;/p></description></item><item><title>Time Series Forecasting Methods (Part 1): Exponential Smoothing and ARIMA</title><link>https://yl238.github.io/posts/exp-smoothing-arima/</link><pubDate>Sat, 03 May 2025 14:29:53 +0100</pubDate><guid>https://yl238.github.io/posts/exp-smoothing-arima/</guid><description>&lt;p>Time series forecasting refers to the use of historical data to predict future values, and enabling the identification of patterns and trends that inform decision-making. An example time series is the UK Retail Sales Index for electrical household appliances from 1988 to 2025 (Figure 1), which provides seasonally adjusted retail sales in Great Britain in both value and volume terms. The ability to accurately forecast such data is crucial, as it helps business stakeholders and policymakers make well-informed decisions in scenarios such as setting economic policies, managing inventory or planning staffing requirements.&lt;/p></description></item><item><title>Edinburgh Data Science Meetup</title><link>https://yl238.github.io/posts/edinburgh-data-science/</link><pubDate>Thu, 01 May 2025 15:49:48 +0100</pubDate><guid>https://yl238.github.io/posts/edinburgh-data-science/</guid><description>&lt;p>Recently I gave a presentation at the &lt;a href="https://www.meetup.com/edinburgh-data-science-ai/">Edinburgh Data Science Meetup&lt;/a> on time-series forecasting. In particular, comparing the differences between traditional methods such as ARIMA and Exponential Smoothing with the latest Deep Learning models. Hopefully I will turn these into blog posts in the coming months, but in the meantime you can download the presentation here.&lt;/p>
+&lt;p>&lt;a href="https://gohugo.io/">Hugo&lt;/a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.&lt;/p></description><content:encoded><![CDATA[<p>This article describes how I built this blog using the <a href="https://gohugo.io/">Hugo</a> framework and the <a href="https://git.io/hugopapermod">PaperMod</a> theme; and how to host it on <a href="https://pages.github.com/">GitHub Pages</a>. Unlike most tutorials, my approach stores the source code in a private GitHub repository while serving the site from a public GitHub Pages repository.</p>
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://gohugo.io/">Hugo</a> is a popular open-source static website generator. Written in Go, it is very fast to build and serve. Like Jekyll, you can write the blog posts using Markdown and Hugo will natively render the markdown files to HTML pages. It supports many themes, including PaperMod, which is very flexible and pleasing to look at.</p>
+<h2 id="github-pages">GitHub Pages</h2>
+<p><a href="https://pages.github.com/">GitHub Pages</a> is a feature provided by Github that allows you to directly host static websites from a Github repository. It is free and simple to use, and clearly version controlled.</p>
+<h2 id="steps-to-create-and-host-a-static-blog">Steps to Create and Host a Static Blog</h2>
+<p>There are plenty of resources on the internet on how to create a static website with Hugo, including their own <a href="https://gohugo.io/getting-started/quick-start/">getting started</a> instructions, and how to <a href="https://pages.github.co">host static sites on Github Pages</a>. However, the repository served by GitHub Pages need to be public, and each time we need to build the site on the server.</p>
+<h3 id="two-repo-workflow">Two-Repo Workflow</h3>
+<p>A better solution is to keep the Hugo source code in a private repo, and when it&rsquo;s ready to be published, generate the final static site and push it to a second public repo. Since Hugo generates plain HTML files, Github Pages can serve them without needing to run Hugo itself. There are multiple advantages of doing this, including</p>
+<ul>
+<li>Fast load time since no build needed on server</li>
+<li>No Hugo setup required on GitHub</li>
+<li>The Hugo source code can be kept private or cleanly separated</li>
+<li>Easier to maintain the &ldquo;published version&rdquo;</li>
+</ul>
+<p>The disadvantages are that you can&rsquo;t edit the website directly on Github easily and the workflow is more complex. However, we can automate this using <a href="https://github.com/features/actions">GitHub Actions</a>. It has been a little painful to set this up, so I&rsquo;m documenting the process in case someone else wants to do the same thing.</p>
+<h3 id="create-github-repositories">Create GitHub Repositories</h3>
+<p>We need to create <strong>two</strong> GitHub repositories, one to keep the Hugo source code, and the other contains the built static site. Go to GitHub and create the following repositories:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Repository</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>hugo-site</code> (Private or Public)</td>
+          <td>Hugo source where we create content, edit theme, configure site</td>
+      </tr>
+      <tr>
+          <td><code>username.github.io</code> (Public)</td>
+          <td>GitHub Page where the built site (HTML/CSS/JS) files live</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="install-hugo-and-create-new-site">Install Hugo and Create New Site</h3>
+<p>On MacOS you can install Hugo using Homebrew by running <code>brew install hugo</code>. For other operating systems check <a href="https://gohugo.io/installation/">Hugo&rsquo;s installation documentation</a>.</p>
+<p>To create a new site we run on the terminal
+<code>hugo new site hugo-site --format yaml</code>.
+This generates a folder <code>hugo-site</code> with the following content:</p>
+<pre tabindex="0"><code>hugo-site
+├── archetypes
+│   └── default.md
+├── assets
+├── content
+├── data
+├── hugo.yaml
+├── i18n
+├── layouts
+├── static
+└── themes
+</code></pre><p>Using the <code>yaml</code> format makes the configuration file a little easier to read. We commit the files to the repo on GitHub:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-site
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:username/hugo-site.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin main       
+</span></span></code></pre></div><h3 id="add-theme-and-content-to-site">Add Theme and Content to Site</h3>
+<p>The theme I chose was <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Installation">PaperMod</a>, which needed to be added as a git submodule:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-site
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;theme: PaperMod&#39;</span> &gt;&gt; hugo.yaml
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive <span style="color:#75715e"># needed when you reclone your repo (submodules may not get cloned automatically)</span>
+</span></span></code></pre></div><p>To generate a new post, run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/hugo-papermod-gh.md
+</span></span></code></pre></div><p>This will create the Markdown file in the <code>content/posts/</code> folder, and automatically add a frontmatter:</p>
+<pre tabindex="0"><code>---
+title: &#34;Hugo PaperMod GH&#34;
+date: 2025-05-03T20:50:10+01:00
+draft: true
+---
+</code></pre><p>Edit content, then run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo --minify --cleanDestinationDir
+</span></span></code></pre></div><p>This will generate a <code>public/</code> folder, which is what will be pushed to <code>username.github.io</code>. By default Hugo builds <em>incrementally</em>, so old files won&rsquo;t be deleted. the <code>cleanDestinationDir</code> flag forces a complete update of the <code>public/</code> folder.</p>
+<p>You can check whether the build was successful locally by running</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo serve -D
+</span></span></code></pre></div><p>The <code>-D</code> flag builds drafts, which are by default skipped by Hugo.</p>
+<p>Finally, make sure you edit the <code>.gitignore</code> file in <code>hugo-site</code> and add <code>public/</code> to skip tracking this folder.</p>
+<p>We will discuss how to customise PaperMod at a later point.</p>
+<h3 id="publish-to-github-pages-repository">Publish to GitHub Pages Repository</h3>
+<p>To publish the newly generated static site in <code>public/</code> to the GitHub Pages repo <code>username.github.io</code>, the easiest way is to turn <code>public/</code> into a Git repo that points to the GitHub Pages repo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:username/username.github.io.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Publish Site&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git push -u origin main --force
+</span></span></code></pre></div><p>Now the site is live at <code>https://username.github.io</code>.</p>
+<h2 id="automate-with-github-actions">Automate with GitHub Actions</h2>
+<p>We can automate this build and deploy process from <code>hugo-site</code> so that on every push to <code>main</code>, GitHub will build Hugo and push <code>public/</code> to <code>username.github.io</code>. This requires a GitHub Personal Access Token.</p>
+<h3 id="create-personal-access-token-on-github">Create Personal Access Token on GitHub</h3>
+<p>In the browser from your GitHub page, go to
+<strong>Settings -&gt; Developer Settings -&gt; Personal Access Tokens -&gt; Tokens (classic) -&gt; Generate new token (classic)</strong></p>
+<img src="/posts/hugo-papermod-gh/github-personal-access-token-page.png" /> 
+<p>Set scopes to be <code>repo</code>: Full control of private and public repos. This is required to push to <code>username.github.io</code>. Copy the token, which we will need only once to create a GitHub secret.</p>
+<h3 id="create-a-github-secret">Create a GitHub Secret</h3>
+<p>In the <code>hugo-site</code> repository:</p>
+<ul>
+<li>Go to <strong>Settings -&gt; Secrets and variables -&gt; Actions -&gt; New repository secret</strong>
+<ul>
+<li>Name: <code>GH_PAGES_TOKEN</code></li>
+<li>Value: <em>Paste your token</em>
+This will be used by GitHub Actions to push to <code>username.github.io</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="set-up-github-actions-workflow-in-hugo-site">Set up GitHub Actions Workflow in <code>hugo-site</code></h3>
+<p>In <code>hugo-site</code>, create the folder and file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.github/workflows/deploy.yml
+</span></span></code></pre></div><p>and populate it with the following config:</p>
+<details>
+<summary>Click to expand code</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo site to GitHub Pages repo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main </span> <span style="color:#75715e"># Change if your branch is called differently</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout source</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#ae81ff">recursive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build site</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --minify --cleanDestinationDir</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">List generated files</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">ls -la ./public</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages repo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">username/username.github.io</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">${{ secrets.GH_PAGES_TOKEN }}</span>
+</span></span></code></pre></div><p><code>external_repository</code> is where the HTML site should go, <code>publish_dir</code> is the Hugo <code>public/</code> folder, and <code>personal_token</code> is the secret we have created (<code>GH_PAGES_TOKEN</code>).</p>
+</details>
+<p>The workflows config file is greatly simplified by the work done by Shohei Ueda who created the GitHub Actions <a href="https://github.com/peaceiris/actions-hugo">to install Hugo to a virtual machine</a> to <a href="https://github.com/peaceiris/actions-gh-pages">deploy static files to GitHub Pages</a>.</p>
+<h3 id="final-step-push-hugo-site-to-trigger-build">Final Step: Push Hugo Site to Trigger Build</h3>
+<p>In <code>hugo-site</code>, run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Update content&#34;</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><p>GitHub Actions will trigger Hugo build and push the HTML output to <code>username.github.io</code> repo, which is published immediately. 🚀</p>
+<p><strong>Note</strong>: this will overwrite <code>username.github.io</code> with the new built site every time we push to <code>hugo-site</code>. We can check the deploy process in GitHub Actions tab.
+<img src="/posts/hugo-papermod-gh/github-actions.png"></p>
+<h3 id="wrapping-up">Wrapping Up</h3>
+<p>Hopefully this post will help you build your own static site using Hugo and GitHub Pages. The PaperMod theme allows you to make nice-looking sites out of the box, but in a following post we&rsquo;ll discuss what we can customise.</p>
+]]></content:encoded></item><item><title>Time Series Forecasting Methods (Part 1): Exponential Smoothing and ARIMA</title><link>https://yl238.github.io/posts/exp-smoothing-arima/</link><pubDate>Sat, 03 May 2025 14:29:53 +0100</pubDate><guid>https://yl238.github.io/posts/exp-smoothing-arima/</guid><description>&lt;p>Time series forecasting refers to the use of historical data to predict future values, and enabling the identification of patterns and trends that inform decision-making. An example time series is the UK Retail Sales Index for electrical household appliances from 1988 to 2025 (Figure 1), which provides seasonally adjusted retail sales in Great Britain in both value and volume terms. The ability to accurately forecast such data is crucial, as it helps business stakeholders and policymakers make well-informed decisions in scenarios such as setting economic policies, managing inventory or planning staffing requirements.&lt;/p></description><content:encoded><![CDATA[<p>Time series forecasting refers to the use of historical data to predict future values, and enabling the identification of patterns and trends that inform decision-making. An example time series is the UK Retail Sales Index for electrical household appliances from 1988 to 2025 (Figure 1), which provides seasonally adjusted retail sales in Great Britain in both value and volume terms. The ability to accurately forecast such data is crucial, as it helps business stakeholders and policymakers make well-informed decisions in scenarios such as setting economic policies, managing inventory or planning staffing requirements.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/UK-retail-sales-index.png" style="display:block; margin:auto; width:90%"/>
+	<figcaption>Figure 1: Retail Sales Index for electrical household appliances. Source:<a href="https://www.ons.gov.uk/businessindustryandtrade/retailindustry/timeseries/jo5f/drsi"> Statistica </a>
+	</figcaption>
+</figure>
+<p>The field of forecasting has advanced rapidly in recent years, with Machine Learning and Deep Learning models increasingly used to tackle time series problems. Nevertheless, traditional methods like <a href="https://otexts.com/fpp3/expsmooth.html">exponential smoothing</a> and <a href="https://otexts.com/fpp3/arima.html">ARIMA</a> remain essential tools for practitioners. They are easy to implement, deliver strong baseline performance, and in many cases, provide results that are competitive with far more complex models (Hyndman 2021). While most modern libraries support these techniques, the underlying details and rationale for using them are often relegated to undergraduate textbooks. In this article, We’ll revisit exponential smoothing and ARIMA, unpack their core ideas, discuss when they are the right choice to use in solving forecasting problems, and share practical tips to help you get started with time series modelling.</p>
+<h2 id="exponential-smoothing">Exponential Smoothing</h2>
+<p>Exponential smoothing was first introduced in the classic papers by Holt (1957) and Winters (1960), and has since inspired some of the most successful forecasting methods. Put simply, forecasts generated through exponential smoothing are weighted averages of past observations, with the weights decreasing exponentially as the observations become older. In other words, more recent observations are given greater weight than those further in the past.</p>
+<h3 id="simple-exponential-smoothing">Simple Exponential Smoothing </h3>
+<p>For a time series with observations at times $t=1,\ldots,T$, the simplest forecasting method is to predict that the value at the next time step $T+1$ will be equal to the value at the current time step $T$. This is known as the ‘naïve’ or ‘random walk’ method. The next simplest approach is averaging, where the forecasted value is the average of all previous observations. However, in most cases, we prefer something in between these two extremes, that is, more recent observations are given greater importance, with weights that gradually decrease for older data points. This idea is illustrated in Figure 2, where the rate of weight decay is governed by the parameter $\alpha$.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/expon-decay-weights.png" style="display:block; margin:auto;width:60%"/>
+	<figcaption>Figure 2: Exponential decay of weights with older data
+	</figcaption>
+</figure>
+In simple exponential smoothing, the forecast for time $T+1$ is a weighted average of all previous observations from times $1,\ldots,T$, with the weights decreasing exponentially as observations get older. Mathematically, this can be expressed as:
+$$
+\hat{y}_{T+1|T} = \alpha y_T + \alpha(1-\alpha)y_{T-1} +\alpha(1-\alpha)^2 y_{T-2} + \ldots
+$$<p>This model is well-suited for forecasting data with no clear trend or seasonal pattern.</p>
+<h3 id="exponential-smoothing-with-trend-and-seasonality">Exponential Smoothing with trend and seasonality</h3>
+<p>In practice, most real-world time series exhibit trends, seasonal cycles, or both. For example, Figure 3 shows the monthly employment figures in the hospitality industry from 2000 to 2020 in the US, decomposed into trend and seasonal components. We can observe a clear upward trend in employment over time, along with a regular annual seasonal pattern corresponding to fluctuations across different months of the year.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/seasonal-decomposition.png" style="display:block; margin:auto;width:80%"/>
+	<figcaption>Figure 3: Monthly employment figure in hospitality industry in the US from 2000–2020.
+	</figcaption>
+</figure>
+<p>To handle such patterns, we can extend the basic exponential smoothing framework to explicitly model both trend and seasonality. As illustrated in Figure 4, these extended equations allow us to directly model the underlying structure of the employment time series without the need for manual preprocessing, such as detrending or deseasonalising the data beforehand. This makes forecasting more straightforward while capturing the essential dynamics of the series.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/expon-smoothing.png" style="width:100%"/>
+	<figcaption>Figure 4. Left: Exponential smoothing equations incorporating trend and seasonality components. Right: Directly fitting the employment time series using the extended model.
+	</figcaption>
+</figure>
+<h2 id="arima">ARIMA</h2>
+<p>A second major family of statistical forecasting methods is ARIMA, which stands for <strong>A</strong>uto<strong>R</strong>egressive <strong>I</strong>ntegrated <strong>M</strong>oving <strong>A</strong>verage. ARIMA models combine three techniques: autoregression, differencing (integration), and moving average, to produce accurate forecasts by working with stationary time series data.
+The term “autoregressive” reflects the idea that forecasting is treated as a regression problem, where past values of the time series are used as predictors for future values. “Integrated” refers to the process of differencing the data, where consecutive observations are subtracted to remove trends or seasonality and achieve stationarity. After forecasts are generated, the differencing is reversed, or ‘integrated’, to bring the predictions back to the original scale. “Moving average” refers to modelling future values as a linear combination of past forecast errors, capturing short-term dependencies that can improve predictive accuracy.<br>
+Table 1 summarises the three main components of the ARIMA model along with brief descriptions of their roles in modelling time series data.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/ARIMA-components.png" style="width:100%"/>
+	<figcaption>Table 1: Description of ARIMA components
+	</figcaption>
+</figure>
+<p>Figure 5 illustrates how an ARIMA model is built for an example time series of US Imports from 1960–2007. The original time series $y(t)$ shows a clear upward trend, which means we need to first apply <em>differencing</em> to remove the trend and create a more stable series, $y'(t)$. After this, we build a linear model using the last $p$ values and the $q$ past forecast errors of the differenced time series $y'(t)$ to predict the next value.</p>
+<figure>
+	<img src="/posts/exp-smoothing-arima/ARIMA-example.png" style="display:block; margin:auto;width:70%"/>
+	<figcaption>Figure 5: A step-by-step look at how an ARIMA model is built for a time series.
+	</figcaption>
+</figure>
+<h3 id="seasonal-arima">Seasonal ARIMA</h3>
+<p>The basic ARIMA model, as described above, does not account for seasonality in time series data. However, it can be extended to handle seasonal cycles by incorporating additional seasonal terms. The modelling procedure remains largely similar to that for non-seasonal data, with the key difference being that we must now select both seasonal and non-seasonal autoregressive and moving average terms. This extension, often referred to as Seasonal ARIMA (or SARIMA), greatly enhances the model’s ability to capture complex patterns in time series that exhibit regular, repeating seasonal behaviour.</p>
+<h2 id="a-comparison-of-exponential-smoothing-andarima">A Comparison of Exponential Smoothing and ARIMA</h2>
+<p>Exponential smoothing and ARIMA represent two distinct approaches to time series forecasting, each with its own strengths and limitations. As described earlier, ARIMA models focus on capturing patterns in the autocorrelations of the data by modelling the relationships between the current value, its lagged values, and past forecast errors. In contrast, exponential smoothing methods directly model the level, trend, and seasonal components of a time series. This makes exponential smoothing relatively easy to use and interpret, and particularly robust in scenarios with strong, stable seasonality.</p>
+<p>However, because exponential smoothing emphasises smoothing over recent observations, it may not respond well to short-term fluctuations, such as sudden spikes in sales following a promotional event. Such short-term impacts are better captured by the autoregressive and moving average components of an ARIMA model. On the other hand, ARIMA models require the time series to be stationary or made stationary through differencing. The added complexity of tuning autoregressive, differencing, and moving average terms can make them more difficult to build and interpret compared to exponential smoothing.</p>
+<figure>
+  <img src="/posts/exp-smoothing-arima/ARIMA-expon-smoothing-comparisons.png" style="display:block; margin:auto; width:60%"/>
+  <figcaption>Figure 6: Summary of the similarities and differences between ARIMA and Exponential Smoothing (ETS) models.</figcaption>
+</figure>
+<h2 id="which-model-should-weuse">Which model should we use?</h2>
+<figure>
+	<img src="/posts/exp-smoothing-arima/ARIMA-expon-smoothing-comparisons-2.png" style="width:100%"/>
+	<figcaption>Table 2: Scenarios where Exponential Smoothing or ARIMA models are most appropriate, with real-world examples.
+	</figcaption>
+</figure>
+<p>The choice between Exponential Smoothing and ARIMA models largely depends on the specific forecasting problem at hand. Table 2 provides a summary of when each method is preferred, along with the reasons for these choices. In brief, Exponential Smoothing is most effective when seasonality or trends are strong, stable, and clearly defined, or when a quick, interpretable baseline forecast is needed. In contrast, ARIMA models are better suited to situations where seasonality is weak or irregular, short-term shocks and autocorrelations dominate the data, and greater model sophistication is required to capture complex, irregular fluctuations.</p>
+<h2 id="summary">Summary</h2>
+<p>I hope this overview has helped you gain a clearer understanding of the principles behind Exponential Smoothing and ARIMA, two of the most widely used approaches in traditional time series forecasting. There are many libraries that implement these models, including <a href="https://www.rdocumentation.org/packages/forecast/versions/8.23.0">Forecast</a> (R), <a href="https://www.statsmodels.org/stable/index.html">Statsmodels</a> (Python) and newer libraries such as <a href="https://www.nixtla.io/">Nixtla</a>, which also offer implementations of machine learning–based forecasting methods. We will explore these more advanced approaches in future posts.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Hyndman, R.J., &amp; Athanasopoulos, G. (2021) <em>Forecasting: principles and practice</em>, 3rd edition, OTexts: Melbourne, Australia. OTexts.com/fpp3.</li>
+<li>Gardner, E. S. (1985). Exponential smoothing: The state of the art. <em>Journal of Forecasting</em>, <em>4</em>(1), 1–28. <a href="https://doi.org/10.1002/for.3980040103">[DOI]</a></li>
+<li>Box, G. E. P., &amp; Jenkins, G. M. (1970). <em>Time series analysis: Forecasting and control</em>. Holden-Day.</li>
+<li>Hyndman, R. J., Koehler, A. B., Ord, J. K., &amp; Snyder, R. D. (2008). <em>Forecasting with exponential smoothing: The state space approach</em>. Springer-Verlag.</li>
+</ul>
+]]></content:encoded></item><item><title>Edinburgh Data Science Meetup</title><link>https://yl238.github.io/posts/edinburgh-data-science/</link><pubDate>Thu, 01 May 2025 15:49:48 +0100</pubDate><guid>https://yl238.github.io/posts/edinburgh-data-science/</guid><description>&lt;p>Recently I gave a presentation at the &lt;a href="https://www.meetup.com/edinburgh-data-science-ai/">Edinburgh Data Science Meetup&lt;/a> on time-series forecasting. In particular, comparing the differences between traditional methods such as ARIMA and Exponential Smoothing with the latest Deep Learning models. Hopefully I will turn these into blog posts in the coming months, but in the meantime you can download the presentation here.&lt;/p>
 &lt;iframe src="https://yl238.github.io/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf#page=1" type="application/pdf" width="100%" height="400px">&lt;/iframe>
 &lt;div style="margin-top: 20px;">
 &lt;a href="https://yl238.github.io/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf" download style="display: inline-block; padding: 10px 20px; background-color: #007acc; color: white; border-radius: 5px; text-decoration: none;">
 ⬇️ Download Full PDF
 &lt;/a>
-&lt;/div></description></item></channel></rss>
+&lt;/div></description><content:encoded><![CDATA[<p>Recently I gave a presentation at the <a href="https://www.meetup.com/edinburgh-data-science-ai/">Edinburgh Data Science Meetup</a> on time-series forecasting. In particular, comparing the differences between traditional methods such as ARIMA and Exponential Smoothing with the latest Deep Learning models. Hopefully I will turn these into blog posts in the coming months, but in the meantime you can download the presentation here.</p>
+<iframe src="/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf#page=1" type="application/pdf" width="100%" height="400px"></iframe>
+<div style="margin-top: 20px;">
+<a href="/posts/edinburgh-data-science/edinburgh-ds-meetup-sueliu.pdf" download style="display: inline-block; padding: 10px 20px; background-color: #007acc; color: white; border-radius: 5px; text-decoration: none;">
+⬇️ Download Full PDF
+</a>
+</div>
+]]></content:encoded></item></channel></rss>
